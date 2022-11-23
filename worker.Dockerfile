@@ -2,4 +2,4 @@ From locustio/locust:latest
 
 COPY locustfiles /mnt/locust/locustfiles
 
-CMD ["-f", "/mnt/locust/locustfiles", "--worker"]
+CMD ["-f", "/mnt/locust/locustfiles", "--worker", "--master-host","loadtest-service--master.service.consul"]
