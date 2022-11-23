@@ -1,11 +1,7 @@
 import json
-import time
 import uuid
 
-import gevent
-from locust import HttpUser, TaskSet, between, events, task, SequentialTaskSet
-from locust.runners import (STATE_CLEANUP, STATE_STOPPED, STATE_STOPPING,
-                            WorkerRunner)
+from locust import HttpUser,  between, task, SequentialTaskSet
 
 headers = {
     "X-App-Token":"419vmKxA6KRbSeqcU4oGzwCPFTwxPIQp",
@@ -27,7 +23,7 @@ class ProcessTask(SequentialTaskSet):
     def post_esign(self):
         # docusign limit 75
         self.document_id = uuid.uuid4()
-        print("--- First Task" + str(self.document_id))
+        print("--- First Task " + str(self.document_id))
         payload = {
             "document_id": str(self.document_id),
             "users": json.dumps([
@@ -61,32 +57,32 @@ class ProcessTask(SequentialTaskSet):
             "participant_id": "1"
         }
         files = {
-            "document": _get_pdf_part("locustfiles/signature/rfc.pdf")
+            "document": _get_pdf_part("/mnt/locust/locustfiles/signature/rfc.pdf")
         }
         response = self.client.post(
             '/esign/document', data=payload, files=files, headers=headers)
-        print(response.json())
+        print(response.text)
 
     @task
     def get_health(self):
-        print("--- Health Check Task" + str(self.document_id))
+        print("--- Health Check Task " + str(self.document_id))
         response = self.client.get("/health")
-        print(response.json())
+        print(response.text)
 
     @task
     def get_docment(self):
         # docusign limit 250
-        print("--- Second Task" + str(self.document_id))
+        print("--- Second Task " + str(self.document_id))
         response = self.client.get(
             "/esign/" + str(self.document_id), headers=headers)
-        print(response.json())
+        print(response.text)
 
     @task
     def get_callback(self):
-        print("--- third Task" + str(self.document_id))
+        print("--- third Task " + str(self.document_id))
         response = self.client.get(
             "/esign/callback?document_id="+str(self.document_id)+"&participant_id=1&event=signing_complete")
-        print(response.json())
+        print(response.text)
 
 
 class TestSignature(HttpUser):
