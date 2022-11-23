@@ -1,0 +1,27 @@
+image: docker
+
+definitions:
+  services:
+    docker:
+      memory: 2048
+  steps:
+    - step: &Deployment
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - curl -L ${CI_URL} -o ci && chmod +x ci && ./ci
+
+pipelines:
+  tags:
+    master-*:
+      - step:
+          <<: *Deployment
+          name: Deploy Master
+          deployment: master
+    worker-*:
+      - step:
+          <<: *Deployment
+          name: Deploy worker
+          deployment: worker
