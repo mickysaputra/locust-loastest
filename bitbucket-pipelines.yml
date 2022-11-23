@@ -1,4 +1,4 @@
-image: docker
+image: atlassian/default-image:latest
 
 definitions:
   services:
