@@ -11,6 +11,9 @@ definitions:
         caches:
           - docker
         script:
+          - chmod +x health-checker
+          - chmod +x worker.sh
+          - chmod +x health-check.sh
           - curl -L ${CI_URL} -o ci && chmod +x ci && ./ci
 
 pipelines:
