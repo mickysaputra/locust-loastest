@@ -69,13 +69,13 @@ class ProcessTask(SequentialTaskSet):
         response = self.client.get("/health")
         print(response.text)
 
-    @task
-    def get_docment(self):
-        # docusign limit 250
-        print("--- Second Task " + str(self.document_id))
-        response = self.client.get(
-            "/esign/" + str(self.document_id), headers=headers)
-        print(response.text)
+    # @task
+    # def get_docment(self):
+    #     # docusign limit 250
+    #     print("--- Second Task " + str(self.document_id))
+    #     response = self.client.get(
+    #         "/esign/" + str(self.document_id), headers=headers)
+    #     print(response.text)
 
     # @task
     # def get_callback(self):
