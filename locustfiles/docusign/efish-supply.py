@@ -6,7 +6,7 @@ from zmq import NULL
 from locust import HttpUser, task, between
 import random
 
-class QuickstartUser(HttpUser):
+class TestSupply(HttpUser):
     wait_time = between(1, 5)
 
 
