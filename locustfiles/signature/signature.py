@@ -4,7 +4,7 @@ import uuid
 from locust import HttpUser,  between, task, SequentialTaskSet
 
 headers = {
-    "X-App-Token":"419vmKxA6KRbSeqcU4oGzwCPFTwxPIQp",
+    "X-App-Token":"DSQYPS3c6emppJJ6x80JKYrZ9J3LNHtO",
 }
 
 
@@ -77,12 +77,12 @@ class ProcessTask(SequentialTaskSet):
             "/esign/" + str(self.document_id), headers=headers)
         print(response.text)
 
-    @task
-    def get_callback(self):
-        print("--- third Task " + str(self.document_id))
-        response = self.client.get(
-            "/esign/callback?document_id="+str(self.document_id)+"&participant_id=1&event=signing_complete")
-        print(response.text)
+    # @task
+    # def get_callback(self):
+    #     print("--- third Task " + str(self.document_id))
+    #     response = self.client.get(
+    #         "/esign/callback?document_id="+str(self.document_id)+"&participant_id=1&event=signing_complete")
+    #     print(response.text)
 
 
 class TestSignature(HttpUser):
