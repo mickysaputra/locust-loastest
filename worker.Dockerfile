@@ -9,4 +9,4 @@ COPY --chown=locust:locust worker.sh worker.sh
 
 ENTRYPOINT []
 
-CMD ["sh","./worker.sh"]
+ENTRYPOINT ["./worker.sh"]
