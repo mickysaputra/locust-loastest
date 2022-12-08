@@ -2,7 +2,7 @@ from locust import HttpUser, task
 import uuid
 import random
 
-class Pdf(HttpUser):
+class ServiceReportPdf(HttpUser):
     @task
     def create_pdf(self):
         headers = {

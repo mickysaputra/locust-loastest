@@ -1,7 +1,7 @@
 from locust import HttpUser, task
 import random
 
-class Pdf(HttpUser):
+class ServiceFlaggingFlagEvaluation(HttpUser):
     @task
     def create_pdf(self):
         user_id = random.randint(1, 10000)
