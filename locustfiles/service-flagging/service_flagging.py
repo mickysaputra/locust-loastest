@@ -1,9 +1,9 @@
 from locust import HttpUser, task
 import random
 
-class ServiceFlaggingFlagEvaluation(HttpUser):
+class ServiceFlagging(HttpUser):
     @task
-    def create_pdf(self):
+    def evaluate_flag(self):
         user_id = random.randint(1, 10000)
 
         self.client.post("/api/v1/evaluation", json={
