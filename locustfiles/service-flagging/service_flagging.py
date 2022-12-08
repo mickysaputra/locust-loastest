@@ -1,7 +1,8 @@
-from locust import HttpUser, task
+from locust import HttpUser, task, between
 import random
 
 class ServiceFlagging(HttpUser):
+    wait_time = between(1, 3)
     @task
     def evaluate_flag(self):
         user_id = random.randint(1, 10000)

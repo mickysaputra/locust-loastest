@@ -1,8 +1,9 @@
-from locust import HttpUser, task
+from locust import HttpUser, task, between
 import uuid
 import random
 
 class ServiceReport(HttpUser):
+    ait_time = between(1, 3)
     @task
     def create_pdf(self):
         headers = {
