@@ -14,6 +14,6 @@ class ServiceFlagging(HttpUser):
                 "user_id": user_id
             },
             "enableDebug": False,
-            "flagID": 33,
-            "flagKey": "production"
+            "flagID": 3,
+            "flagKey": ""
         })
