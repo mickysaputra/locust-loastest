@@ -12,7 +12,7 @@ class FmsV2(HttpUser):
         }
 
         payload = {
-            'files': (''.join(random.choice(letters) for i in range(10)), open('file_large.file', 'rb')),
+            'files': (''.join(random.choice(letters) for i in range(10)), open('file_average.file', 'rb')),
             'album': (None, 'load-test'),
             'bucket': (None, 'public-tools'),
             'private': (None, 'true')
