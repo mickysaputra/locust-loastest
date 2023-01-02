@@ -56,14 +56,14 @@ class PromoMgmtSvcLoadTest(HttpUser):
                     {
                         "brand_id": "abogoboga",
                         "supplier_id": "some supplier",
-                        "sku_id": "lele",
+                        "sku_id": "patin",
                         "total_amount": 7000,
                         "total_qty": 25,
                         "unit": "sack"
                     },
                     {
                         "brand_id": "abogoboga",
-                        "sku_id": "lele",
+                        "sku_id": "hiu",
                         "supplier_id": "wehehe",
                         "total_amount": 5000,
                         "total_qty": 1,
@@ -71,7 +71,7 @@ class PromoMgmtSvcLoadTest(HttpUser):
                     },
                     {
                         "brand_id": "abogoboga",
-                        "sku_id": "lele",
+                        "sku_id": "lumba-lumba",
                         "supplier_id": "wehehe",
                         "total_amount": 5000,
                         "total_qty": 1000,
