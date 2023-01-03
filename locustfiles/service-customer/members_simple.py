@@ -8,5 +8,7 @@ class SCGetSimpleMembers(HttpUser):
     @task
     def get_simple_members(self):
         with self.client.get('/members/simple?limit=10&is_user=true&page=1', catch_response=True, headers=headers_x) as response:
+            if response.status_code == 429:
+                response.success() # if reach rate limiter, dont count as failed
             if response.status_code != 200:
                 response.failure(response.content)
