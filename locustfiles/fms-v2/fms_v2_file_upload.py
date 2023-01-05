@@ -2,7 +2,7 @@ import random
 import string
 from locust import HttpUser, task
 
-class FmsV2(HttpUser):
+class FmsV2FileUpload(HttpUser):
     @task
     def upload(self):
         letters = string.ascii_lowercase
@@ -12,7 +12,7 @@ class FmsV2(HttpUser):
         }
 
         payload = {
-            'files': (''.join(random.choice(letters) for i in range(10)), open('file_average.file', 'rb')),
+            'files': (''.join(random.choice(letters) for i in range(10)), open('./locustfiles/fms-v2/file_average.file', 'rb')),
             'album': (None, 'load-test'),
             'bucket': (None, 'public-tools'),
             'private': (None, 'true')
