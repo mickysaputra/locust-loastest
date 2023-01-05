@@ -12,7 +12,7 @@ class FmsV2FileUpload(HttpUser):
         }
 
         payload = {
-            'files': (''.join(random.choice(letters) for i in range(10)), open('./locustfiles/fms-v2/file_average.file', 'rb')),
+            'files': (''.join(random.choice(letters) for i in range(10)), open('/mnt/locust/locustfiles/fms-v2/file_average.file', 'rb')),
             'album': (None, 'load-test'),
             'bucket': (None, 'public-tools'),
             'private': (None, 'true')
