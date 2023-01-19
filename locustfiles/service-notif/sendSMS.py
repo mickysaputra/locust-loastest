@@ -15,7 +15,7 @@ class OTPNotif(HttpUser):
         with self.client.post("/otp/send",
             catch_response=True, 
             data=json.dumps(otpBody),
-            headers={"Authorization": "Bearer " + "419vmKxA6KRbSeqcU4oGzwCPFTwxPIQp" }) as response:
+            headers=headers) as response:
             if response.status_code != 200:
                 response.failure('status code not 200')
             else :
