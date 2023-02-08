@@ -363,6 +363,6 @@ class JobDashboard(TaskSet):
         MemoryUtilizationAlloc(self)
         CpuUtilizationAlloc(self)
 
-class grafana-oldSQLite(HttpUser):
+class GrafanaSQLite(HttpUser):
     
     tasks = {JobDashboard}

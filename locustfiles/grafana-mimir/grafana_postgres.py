@@ -363,6 +363,6 @@ class JobDashboard(TaskSet):
         MemoryUtilizationAlloc(self)
         CpuUtilizationAlloc(self)
 
-class Concurrent(HttpUser):
+class GrafanaPostgres(HttpUser):
     
     tasks = {JobDashboard}
