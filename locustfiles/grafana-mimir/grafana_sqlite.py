@@ -2,7 +2,7 @@ from locust import HttpUser, TaskSet, task
 import json
 import os
 
-api_key = "Bearer " + os.getenv('grafana-old_SQLITE_API_KEY')
+api_key = "Bearer " + os.getenv('GRAFANA_SQLITE_API_KEY')
 header_template = {
     "Content-Type":"application/json",
     "Authorization":api_key,
