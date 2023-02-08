@@ -32,7 +32,7 @@ def MemoryUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -59,7 +59,7 @@ def MemoryUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -88,7 +88,7 @@ def CpuUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -115,7 +115,7 @@ def CpuUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -144,7 +144,7 @@ def MemoryUtilizationJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
@@ -173,7 +173,7 @@ def CpuUtilizationJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
@@ -202,7 +202,7 @@ def MemoryUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -229,7 +229,7 @@ def MemoryUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -258,7 +258,7 @@ def CpuUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -285,7 +285,7 @@ def CpuUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -314,7 +314,7 @@ def MemoryUtilizationAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
@@ -343,7 +343,7 @@ def CpuUtilizationAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana-postgresql.service.consul/api/ds/query",
+        url="http://grafana.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
