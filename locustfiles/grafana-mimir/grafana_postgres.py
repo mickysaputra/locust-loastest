@@ -2,7 +2,7 @@ from locust import HttpUser, TaskSet, task
 import json
 import os
 
-api_key = "Bearer " + os.getenv('GRAFANA_API_KEY')
+api_key = "Bearer " + os.getenv('GRAFANA_POSTGRES_API_KEY')
 header_template = {
     "Content-Type":"application/json",
     "Authorization":api_key,
@@ -16,14 +16,14 @@ def MemoryUsageJob(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "avg(nomad_client_allocs_memory_allocated{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -32,7 +32,7 @@ def MemoryUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -43,14 +43,14 @@ def MemoryUsageJob(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "avg(nomad_client_allocs_memory_usage{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -59,7 +59,7 @@ def MemoryUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -72,14 +72,14 @@ def CpuUsageJob(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "avg(nomad_client_allocs_cpu_allocated{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -88,7 +88,7 @@ def CpuUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -99,14 +99,14 @@ def CpuUsageJob(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "avg(nomad_client_allocs_cpu_total_ticks{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -115,7 +115,7 @@ def CpuUsageJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -128,14 +128,14 @@ def MemoryUtilizationJob(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "(avg(nomad_client_allocs_memory_usage{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace) \r\n/\r\navg(nomad_client_allocs_memory_allocated{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)) * 100",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -144,7 +144,7 @@ def MemoryUtilizationJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
@@ -157,14 +157,14 @@ def CpuUtilizationJob(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "(avg(nomad_client_allocs_cpu_total_ticks{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace) \r\n/\r\navg(nomad_client_allocs_cpu_allocated{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)) * 100",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -173,7 +173,7 @@ def CpuUtilizationJob(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
@@ -186,14 +186,14 @@ def MemoryUsageAlloc(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "avg(nomad_client_allocs_memory_allocated{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace)",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -202,7 +202,7 @@ def MemoryUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -213,14 +213,14 @@ def MemoryUsageAlloc(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "nomad_client_allocs_memory_usage{exported_job=\"mimir-distributed\"}",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -229,7 +229,7 @@ def MemoryUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -242,14 +242,14 @@ def CpuUsageAlloc(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "avg(nomad_client_allocs_cpu_allocated{exported_job=\"mimir-distributed\"}) by (task,task_group,namespace) * 1000000",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -258,7 +258,7 @@ def CpuUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data1),
         auth=None,
         headers=header_template
@@ -269,14 +269,14 @@ def CpuUsageAlloc(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "nomad_client_allocs_cpu_total_ticks{exported_job=\"mimir-distributed\"} * 1000000",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -285,7 +285,7 @@ def CpuUsageAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data2),
         auth=None,
         headers=header_template
@@ -298,14 +298,14 @@ def MemoryUtilizationAlloc(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "(nomad_client_allocs_memory_usage{exported_job=\"mimir-distributed\"} \r\n/\r\nnomad_client_allocs_memory_allocated{exported_job=\"mimir-distributed\"}) * 100",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -314,7 +314,7 @@ def MemoryUtilizationAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
@@ -327,14 +327,14 @@ def CpuUtilizationAlloc(self):
                 "refId":"A",
                 "datasource":{
                     "type": "prometheus",
-                    "uid":"jAg31STVk"
+                    "uid":"75ZcG8A4k"
                 },
             "editorMode": "builder",
             "expr": "(nomad_client_allocs_cpu_total_ticks{exported_job=\"mimir-distributed\"} \r\n/\r\nnomad_client_allocs_cpu_allocated{exported_job=\"mimir-distributed\"}) * 100",
             "queryType": "timeSeriesQuery",
             "maxLines": 1000,
             "legendFormat": "__auto",
-            "datasourceId": 13,
+            "datasourceId": 1,
             "intervalMs": 15000,
             "maxDataPoints": 1459
             }
@@ -343,7 +343,7 @@ def CpuUtilizationAlloc(self):
         "to":"now"
     }
     self.client.post(
-        url="http://grafana.service.consul/api/ds/query",
+        url="http://grafana-postgresql.service.consul/api/ds/query",
         data=json.dumps(data),
         auth=None,
         headers=header_template
