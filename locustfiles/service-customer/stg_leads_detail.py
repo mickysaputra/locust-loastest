@@ -2,7 +2,7 @@ from locust import HttpUser, task, between
 
 headers_x = {'x-client-id': 'TEST-LOAD', 'X-App-Id': 'TEST-LOAD', 'Content-Type': 'application/json', 'X-App-Token': '419vmKxA6KRbSeqcU4oGzwCPFTwxPIQp'}
 
-class SCGetLeadsSTG(HttpUser):
+class SCGetLeadsDetailSTG(HttpUser):
     wait_time = between(1, 5)
 
     @task
