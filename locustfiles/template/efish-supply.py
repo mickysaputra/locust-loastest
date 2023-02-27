@@ -12,7 +12,8 @@ class TestSupply(HttpUser):
 
     @task
     def post_create_supply_non_digital_sign(self):
-        
+
+        self.client.request_name = "(Template) post_create_supply_non_digital_sign"
         self.client.post('/v1/supply/validation/8d153006-2b9c-48c0-9542-8393f34f0d6a',json=
         {
             "approval_submission": True,
@@ -43,7 +44,8 @@ class TestSupply(HttpUser):
     @task
     def post_supply_validation_non_digital_sign(self):
 
-       self.client.post('/v2/supply',json=
+        self.client.request_name = "(Template) post_supply_validation_non_digital_sign"
+        self.client.post('/v2/supply',json=
        {
         "supply_type": "FISH",
         "supplier_id": "512kcapkshn3",
