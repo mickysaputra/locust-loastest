@@ -50,3 +50,5 @@ The Web UI will display:
 
 <img src="_images/userclass_picker_example.png" width="200" />
  
+Notes:
+- re-deploy 04042023
