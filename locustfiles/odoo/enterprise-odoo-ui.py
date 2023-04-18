@@ -1,5 +1,7 @@
 from locust import HttpUser, task, SequentialTaskSet, constant
 
+# from OdooLocust.OdooLocustUser import OdooLocustUser
+
 pheaders = {
     'API-KEY': 'efishery_123',
     'Cookie': 'session_id=e6656a8f00beb5bcc7468f4a9fb246400f20754d'
@@ -405,3 +407,7 @@ class SeqTaskHardCase(SequentialTaskSet):
                         headers=pheaders
                         )
 
+
+class HelloWorldUser(HttpUser):
+    tasks = [SeqTaskEasyCase]
+    wait_time = constant(1)
