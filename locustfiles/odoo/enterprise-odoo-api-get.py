@@ -1,8 +1,8 @@
-from locust import HttpUser, task, between, tag
+from locust import HttpUser, task, between, tag, constant
 
 
 class GetPartner(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('partner')
     @task
@@ -20,7 +20,7 @@ class GetPartner(HttpUser):
 
 
 class GetPartnerChild(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('partner_child')
     @task
@@ -38,7 +38,7 @@ class GetPartnerChild(HttpUser):
 
 
 class GetProduct(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('product')
     @task
@@ -56,7 +56,7 @@ class GetProduct(HttpUser):
 
 
 class GetPurchase(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('purchase')
     @task
@@ -74,7 +74,7 @@ class GetPurchase(HttpUser):
 
 
 class GetSale(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('sale')
     @task
@@ -92,7 +92,7 @@ class GetSale(HttpUser):
 
 
 class GetUom(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('uom')
     @task
@@ -110,7 +110,7 @@ class GetUom(HttpUser):
 
 
 class GetPaymentRequest(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('prf')
     @task
@@ -128,7 +128,7 @@ class GetPaymentRequest(HttpUser):
 
 
 class GetPicking(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @tag('picking')
     @task
@@ -147,7 +147,7 @@ class GetPicking(HttpUser):
 
 
 class ParallelAPIRun(HttpUser):
-    wait_time = between(1, 5)
+    wait_time = constant(1)
 
     @task
     def get_partner(self):
