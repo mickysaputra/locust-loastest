@@ -9,6 +9,7 @@ class GetPartner(HttpUser):
     def get_partner(self):
         with self.client.get('/efishery/api/v1/partner/51234qs6q6u8',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -26,6 +27,7 @@ class GetPartnerChild(HttpUser):
     def get_partner_child(self):
         with self.client.get('/efishery/api/v1/partner/513uyvid8npp/child',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -43,6 +45,7 @@ class GetProduct(HttpUser):
     def get_product(self):
         with self.client.get('/efishery/api/v2/product/mall-product-1794',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -60,6 +63,7 @@ class GetPurchase(HttpUser):
     def get_purchase(self):
         with self.client.get('/efishery/api/v1/purchase/UE8vRlJNLzIwMjMvMDMvMDE3NTQ=',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -77,6 +81,7 @@ class GetSale(HttpUser):
     def get_sale(self):
         with self.client.get('/efishery/api/v1/sale/order/TVBMLzIwMjIxMTIyL1NIUi8zNzI4Mzc=',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -94,6 +99,7 @@ class GetUom(HttpUser):
     def get_uom(self):
         with self.client.get('/efishery/api/v1/uom/UOM-MPL-1662101317623',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -111,6 +117,7 @@ class GetPaymentRequest(HttpUser):
     def get_prf(self):
         with self.client.get('/efishery/api/v1/prf/39',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -129,6 +136,7 @@ class GetPicking(HttpUser):
         with self.client.get(
                 '/efishery/api/v1/picking?so_external_id=ORDER/TEST/NAUFAL/13/03/2023/1&po_external_id=PO/MAL/2023/03/69178',
                 headers={'Accept': 'application/json',
+                         'API-KEY': 'efishery_123',
                          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                 catch_response=True
                 ) as response:
@@ -145,6 +153,7 @@ class ParallelAPIRun(HttpUser):
     def get_partner(self):
         with self.client.get('/efishery/api/v1/partner/51234qs6q6u8',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -157,6 +166,7 @@ class ParallelAPIRun(HttpUser):
     def get_partner_child(self):
         with self.client.get('/efishery/api/v1/partner/513uyvid8npp/child',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -169,6 +179,7 @@ class ParallelAPIRun(HttpUser):
     def get_product(self):
         with self.client.get('/efishery/api/v2/product/mall-product-1794',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -181,6 +192,7 @@ class ParallelAPIRun(HttpUser):
     def get_purchase(self):
         with self.client.get('/efishery/api/v1/purchase/UE8vRlJNLzIwMjMvMDMvMDE3NTQ=',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -193,6 +205,7 @@ class ParallelAPIRun(HttpUser):
     def get_sale(self):
         with self.client.get('/efishery/api/v1/sale/order/TVBMLzIwMjIxMTIyL1NIUi8zNzI4Mzc=',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -205,6 +218,7 @@ class ParallelAPIRun(HttpUser):
     def get_uom(self):
         with self.client.get('/efishery/api/v1/uom/UOM-MPL-1662101317623',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -217,6 +231,7 @@ class ParallelAPIRun(HttpUser):
     def get_prf(self):
         with self.client.get('/efishery/api/v1/prf/39',
                              headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                              catch_response=True
                              ) as response:
@@ -230,6 +245,7 @@ class ParallelAPIRun(HttpUser):
         with self.client.get(
                 '/efishery/api/v1/picking?so_external_id=ORDER/TEST/NAUFAL/13/03/2023/1&po_external_id=PO/MAL/2023/03/69178',
                 headers={'Accept': 'application/json',
+                         'API-KEY': 'efishery_123',
                          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
                 catch_response=True
                 ) as response:
