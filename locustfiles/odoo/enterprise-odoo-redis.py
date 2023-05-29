@@ -5,7 +5,7 @@ import redis
 from locust import User, events, task, tag
 import datetime
 
-host_name = "redis-stg.service.consul"
+host_name = "new-redis-odoo-preproduction.service.consul"
 port_no = 6379
 
 
