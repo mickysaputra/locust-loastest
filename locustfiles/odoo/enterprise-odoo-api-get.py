@@ -260,7 +260,7 @@ class GetProductV3(HttpUser):
     @tag('productV3')
     @task
     def get_product_v3(self):
-        with self.client.get('/efishery/api/v3/product?limit=5&offset=2&keyword=gurame&type=product&company=FRESH&category=fresh&route=buy',
+        with self.client.get('/efishery/api/v3/product',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
@@ -278,6 +278,23 @@ class GetProductByExternalIdV3(HttpUser):
     @task
     def get_product_external_id_v3(self):
         with self.client.get('/efishery/api/v3/product/mall-product-1510',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetProductV3WithParam(HttpUser):
+    wait_time = constant(1)
+
+    @tag('productV3')
+    @task
+    def get_product_v3(self):
+        with self.client.get('/efishery/api/v3/product?limit=10&offset=2&keyword=gurame&type=product&company=FRESH&category=fresh&route=buy',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
