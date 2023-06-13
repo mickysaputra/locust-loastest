@@ -2,7 +2,7 @@ from locust import HttpUser, task, between, tag, constant
 
 
 class GetPartner(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('partner')
     @task
@@ -20,7 +20,7 @@ class GetPartner(HttpUser):
 
 
 class GetPartnerChild(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('partner_child')
     @task
@@ -38,7 +38,7 @@ class GetPartnerChild(HttpUser):
 
 
 class GetProductV2(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('productV2')
     @task
@@ -56,7 +56,7 @@ class GetProductV2(HttpUser):
 
 
 class GetPurchase(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('purchase')
     @task
@@ -74,7 +74,7 @@ class GetPurchase(HttpUser):
 
 
 class GetSale(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('sale')
     @task
@@ -92,7 +92,7 @@ class GetSale(HttpUser):
 
 
 class GetUom(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('uom')
     @task
@@ -110,7 +110,7 @@ class GetUom(HttpUser):
 
 
 class GetPaymentRequest(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('prf')
     @task
@@ -128,7 +128,7 @@ class GetPaymentRequest(HttpUser):
 
 
 class GetPicking(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @tag('picking')
     @task
@@ -147,7 +147,7 @@ class GetPicking(HttpUser):
 
 
 class ParallelAPIRun(HttpUser):
-    wait_time = constant(1)
+    wait_time = constant(0)
 
     @task
     def get_partner(self):
@@ -254,6 +254,20 @@ class ParallelAPIRun(HttpUser):
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
 
+
+class GetHealth(HttpUser):
+    wait_time = constant(0)
+
+    @tag('health')
+    @task
+    def get_health(self):
+        with self.client.get('/health', catch_response=True) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+
 class GetProductV3(HttpUser):
     wait_time = constant(1)
 
@@ -271,6 +285,7 @@ class GetProductV3(HttpUser):
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
 
+
 class GetProductByExternalIdV3(HttpUser):
     wait_time = constant(1)
 
@@ -287,6 +302,7 @@ class GetProductByExternalIdV3(HttpUser):
                 response.failure("Request Failed!")
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
+
 
 class GetProductV3WithParam(HttpUser):
     wait_time = constant(1)
