@@ -254,6 +254,20 @@ class ParallelAPIRun(HttpUser):
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
 
+
+class GetHealth(HttpUser):
+    wait_time = constant(1)
+
+    @tag('health')
+    @task
+    def get_health(self):
+        with self.client.get('/health', catch_response=True) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+
 class GetProductV3(HttpUser):
     wait_time = constant(1)
 
@@ -271,6 +285,7 @@ class GetProductV3(HttpUser):
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
 
+
 class GetProductByExternalIdV3(HttpUser):
     wait_time = constant(1)
 
@@ -287,6 +302,7 @@ class GetProductByExternalIdV3(HttpUser):
                 response.failure("Request Failed!")
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
+
 
 class GetProductV3WithParam(HttpUser):
     wait_time = constant(1)
