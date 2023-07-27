@@ -91,13 +91,47 @@ class GetSale(HttpUser):
                 print("Elapsed time between request and response more than 500ms")
 
 
-class GetUom(HttpUser):
+class GetUomById(HttpUser):
     wait_time = constant(0)
 
     @tag('uom')
     @task
-    def get_uom(self):
-        with self.client.get('/efishery/api/v1/uom/UOM-MPL-1662101317623',
+    def get_uom_by_id(self):
+        with self.client.get('/efishery/api/v1/uom/UOM-MPL-1688648276022',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetUomWithSingleParam(HttpUser):
+    wait_time = constant(0)
+
+    @tag('uom')
+    @task
+    def get_uom_with_single_param(self):
+        with self.client.get('/efishery/api/v1/uom?name=Kg',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetUomWithoutParam(HttpUser):
+    wait_time = constant(0)
+
+    @tag('uom')
+    @task
+    def get_uom_without_param(self):
+        with self.client.get('/efishery/api/v1/uom',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
@@ -311,6 +345,74 @@ class GetProductV3WithParam(HttpUser):
     @task
     def get_product_v3(self):
         with self.client.get('/efishery/api/v3/product?limit=10&offset=2&keyword=gurame&type=product&company=FRESH&category=fresh&route=buy',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetUomV3WithMultipleParam(HttpUser):
+    wait_time = constant(1)
+
+    @tag('UOMV3')
+    @task
+    def get_uom_v3_with_multiple_param(self):
+        with self.client.get('/efishery/api/v3/uom?category=Unit&keyword=pack&type=bigger&limit=1&offset=0',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetUomV3WithSingleParam(HttpUser):
+    wait_time = constant(1)
+
+    @tag('UOMV3')
+    @task
+    def get_uom_v3_with_single_param(self):
+        with self.client.get('/efishery/api/v3/uom?category=Unit',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetUomV3WithoutParam(HttpUser):
+    wait_time = constant(1)
+
+    @tag('UOMV3')
+    @task
+    def get_uom_v3_without_param(self):
+        with self.client.get('/efishery/api/v3/uom',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetUomV3ById(HttpUser):
+    wait_time = constant(1)
+
+    @tag('UOMV3')
+    @task
+    def get_uom_v3_by_id(self):
+        with self.client.get('/efishery/api/v3/uom/4',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
