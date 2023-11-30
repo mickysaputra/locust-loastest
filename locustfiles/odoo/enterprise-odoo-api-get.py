@@ -473,7 +473,7 @@ class GetInvoiceByDate(HttpUser):
     @tag('InvoiceV1')
     @task
     def get_invoice(self):
-        with self.client.get('/efishery/api/v1/invoice?start=2022-07-10&end=2023-07-11',
+        with self.client.get('/efishery/api/v1/invoice?start=2022-07-10&end=2023-07-11&limit=10',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'X-Client-ID': 'qa-load-test',
@@ -491,7 +491,7 @@ class GetInvoiceByState(HttpUser):
     @tag('InvoiceV1')
     @task
     def get_invoice_by_state(self):
-        with self.client.get('/efishery/api/v1/invoice?invoice_status=posted',
+        with self.client.get('/efishery/api/v1/invoice?invoice_status=posted&limit=10',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'X-Client-ID': 'qa-load-test',
