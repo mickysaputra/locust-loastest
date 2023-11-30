@@ -466,3 +466,39 @@ class GetJournalEntries(HttpUser):
                 response.failure("Request Failed!")
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
+
+class GetInvoiceByDate(HttpUser):
+    wait_time = constant(1)
+
+    @tag('InvoiceV1')
+    @task
+    def get_invoice(self):
+        with self.client.get('/efishery/api/v1/invoice?start=2022-07-10&end=2023-07-11',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'X-Client-ID': 'qa-load-test',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
+
+class GetInvoiceByState(HttpUser):
+    wait_time = constant(1)
+
+    @tag('InvoiceV1')
+    @task
+    def get_invoice_by_state(self):
+        with self.client.get('/efishery/api/v1/invoice?invoice_status=posted',
+                             headers={'Accept': 'application/json',
+                                      'API-KEY': 'efishery_123',
+                                      'X-Client-ID': 'qa-load-test',
+                                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MTQ4MjQ1OTksImV4cCI6MTY0NjM2MDU5OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.u0NyTeIoBhlorZq0d9sFv2k4n2UnjXBjdHtO-fctBoc'},
+                             catch_response=True
+                             ) as response:
+            if response.status_code == 400 or response.status_code == 404:
+                response.failure("Request Failed!")
+            elif response.elapsed.total_seconds() > 0.5:
+                print("Elapsed time between request and response more than 500ms")
