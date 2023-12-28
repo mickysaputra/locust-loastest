@@ -491,7 +491,7 @@ class GetInvoiceByState(HttpUser):
     @tag('InvoiceV1')
     @task
     def get_invoice_by_state(self):
-        with self.client.get('/efishery/api/v1/invoice?invoice_status=posted&limit=10',
+        with self.client.get('/efishery/api/v1/invoice?invoice_status=posted&limit=100',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'X-Client-ID': 'qa-load-test',
@@ -502,3 +502,28 @@ class GetInvoiceByState(HttpUser):
                 response.failure("Request Failed!")
             elif response.elapsed.total_seconds() > 0.5:
                 print("Elapsed time between request and response more than 500ms")
+
+class ParallelAPIRun1(HttpUser):
+    wait_time = constant(0)
+
+    @task
+    def get_invoice_by_state(self):
+            with self.client.get('/efishery/api/v1/invoice?invoice_status=posted&limit=100',
+                                 headers={'Accept': 'application/json',
+                                          'API-KEY': '9N(Ec1UmpkVSZiqe',
+                                          'X-Client-ID': 'qa-load-test',
+                                          },
+                                 catch_response=True
+                                 ) as response:
+                if response.status_code == 400 or response.status_code == 404:
+                    response.failure("Request Failed!")
+                elif response.elapsed.total_seconds() > 0.5:
+                    print("Elapsed time between request and response more than 500ms")
+
+    @task
+    def get_health(self):
+            with self.client.get('/health', catch_response=True) as response:
+                if response.status_code == 400 or response.status_code == 404:
+                    response.failure("Request Failed!")
+                elif response.elapsed.total_seconds() > 0.5:
+                    print("Elapsed time between request and response more than 500ms")
