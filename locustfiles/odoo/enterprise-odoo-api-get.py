@@ -509,7 +509,7 @@ class GetInvoiceByPaymentState(HttpUser):
     @tag('InvoiceV1')
     @task
     def get_invoice_by_payment_state(self):
-        with self.client.get('/efishery/api/v1/invoice?company=FRESH&customer=512z9ha45h8u&limit=30&offset=0&payment_status=paid,in_payment,not_paid,partial',
+        with self.client.get('/efishery/api/v1/invoice?company=FRESH&customer=512qwh49abew&limit=30&offset=0&payment_status=paid,in_payment,not_paid,partial',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'X-Client-ID': 'qa-load-test',
@@ -527,7 +527,7 @@ class GetInvoiceByInvoiceState(HttpUser):
        @tag('InvoiceV1')
        @task
        def get_invoice_by_invoice_status(self):
-           with self.client.get('/efishery/api/v1/invoice?company=FRESH&customer=512z9ha45h8u&limit=30&offset=0&invoice_status=posted',
+           with self.client.get('/efishery/api/v1/invoice?company=FRESH&customer=512qwh49abew&limit=30&offset=0&invoice_status=posted',
                                 headers={'Accept': 'application/json',
                                          'API-KEY': 'efishery_123',
                                          'X-Client-ID': 'qa-load-test',
@@ -545,7 +545,7 @@ class GetVendorBillByPaymentState(HttpUser):
     @tag('VendorBillV1')
     @task
     def get_vb_by_payment_state(self):
-        with self.client.get('/efishery/api/v1/vendor-bill?vendor=512z9ha45h8u&company=MALL&payment_status=paid,in_payment,not_paid,partial&offset=0&limit=30',
+        with self.client.get('/efishery/api/v1/vendor-bill?vendor=512qwh49abew&company=MALL&payment_status=paid,in_payment,not_paid,partial&offset=0&limit=30',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'X-Client-ID': 'qa-load-test',
@@ -563,7 +563,7 @@ class GetVendorBillByBillState(HttpUser):
     @tag('VendorBillV1')
     @task
     def get_vb_by_bill_state(self):
-        with self.client.get('/efishery/api/v1/vendor-bill?vendor=512z9ha45h8u&company=MALL&bill_status=posted&offset=0&limit=30',
+        with self.client.get('/efishery/api/v1/vendor-bill?vendor=512qwh49abew&company=MALL&bill_status=posted&offset=0&limit=30',
                              headers={'Accept': 'application/json',
                                       'API-KEY': 'efishery_123',
                                       'X-Client-ID': 'qa-load-test',
