@@ -24,8 +24,7 @@ definitions:
           - kube.preproduction
         script:
           - apt-get update -y 
-          - apt-get install -y rsync # install rsync
-          # - ssh ${SSH_KEY}@${SSH_HOST} "echo 'test'"
+          - apt-get install -y rsync ssh-askpass # install rsync
           - rsync -arPp --progress locustfiles \
             ${SSH_USER}@${SSH_HOST}:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles            
 
