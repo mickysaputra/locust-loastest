@@ -31,7 +31,7 @@ definitions:
               REMOTE_PATH: '/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles'
               LOCAL_PATH: 'locustfiles'
               DEBUG: 'true'
-              SSH_PORT: '22'
+              # SSH_PORT: '22'
               SSH_KEY: $SSH_KEY # Optional.
           # - apt-get update -y 
           # - apt-get install -y ssh-askpass # install rsync
