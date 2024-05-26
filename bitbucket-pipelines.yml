@@ -16,6 +16,22 @@ definitions:
           - chmod +x health-check.sh
           - curl -L ${CI_URL} -o ci && chmod +x ci && ./ci
 
+    - step: &Sync
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - pipe: atlassian/rsync-deploy:0.12.0
+            variables:
+              USER: 'root'
+              SERVER: '10.20.0.65'
+              REMOTE_PATH: '/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles'
+              LOCAL_PATH: 'locustfiles'
+              DEBUG: 'true'
+              SSH_PORT: '22'
+              SSH_KEY: '${SSH_KEY}' # Optional.
+
 pipelines:
   tags:
     master-*:
@@ -28,3 +44,9 @@ pipelines:
           <<: *Deployment
           name: Deploy worker
           deployment: worker
+  branches:
+    development: 
+      - step: 
+          <<: *Sync
+          name: rsync to nfs
+          deployment: sync
