@@ -21,6 +21,9 @@ definitions:
           - docker
         caches:
           - docker
+        runs-on:
+          - self.hosted
+          - kube.preproduction
         script:
           - pipe: atlassian/rsync-deploy:0.12.0
             variables:
