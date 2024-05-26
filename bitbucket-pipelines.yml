@@ -23,6 +23,7 @@ definitions:
           - self.hosted
           - kube.preproduction
         script:
+          - echo '$SSH_KEY'
           - pipe: atlassian/rsync-deploy:0.12.0
             variables:
               USER: 'root'
@@ -32,6 +33,7 @@ definitions:
               DEBUG: 'true'
               SSH_PORT: '22'
               SSH_KEY: $SSH_KEY # Optional.
+            
 
 pipelines:
   tags:
