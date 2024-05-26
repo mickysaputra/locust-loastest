@@ -49,4 +49,4 @@ pipelines:
       - step: 
           <<: *Sync
           name: rsync to nfs
-          deployment: Sync
+          deployment: sync
