@@ -23,8 +23,10 @@ definitions:
           - self.hosted
           - kube.preproduction
         script:
+          - echo "/$SSH_USER/.ssh/pipelines_id"
           - echo "$SSH_PRIVATE_KEY" > /$SSH_USER/.ssh/pipelines_id
           - chmod 600 /$SSH_USER/.ssh/pipelines_id
+          - echo "/$SSH_USER/.ssh/pipelines_id"
           - pipe: atlassian/rsync-deploy:0.12.0
             variables:
               USER: $SSH_USER
