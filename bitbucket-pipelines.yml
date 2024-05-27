@@ -32,7 +32,7 @@ definitions:
               LOCAL_PATH: 'locustfiles'
               DEBUG: 'true'
               # SSH_PORT: '22'
-              SSH_KEY: $SSH_KEY # Optional.
+              SSH_KEY: $SSH_PRIVATE_KEY # Optional.
               SSH_ARGS: '-o StrictHostKeyChecking=no'
           # - apt-get update -y 
           # - apt-get install -y ssh-askpass # install rsync
