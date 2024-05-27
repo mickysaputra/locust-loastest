@@ -23,6 +23,8 @@ definitions:
           - self.hosted
           - kube.preproduction
         script:
+          - echo "$USER"
+          - which ssh 
           - cat "/${SSH_USER}/.ssh/id_rsa"
           - echo "${SSH_PRIVATE_KEY}" > /${SSH_USER}/.ssh/id_rsa
           - chmod 600 /${SSH_USER}/.ssh/id_rsa
