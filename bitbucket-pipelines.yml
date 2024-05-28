@@ -23,10 +23,9 @@ definitions:
           - self.hosted
           - kube.preproduction
         script:
-          - which ssh 
-          - apt update 
-          - apt install ssh-askpass -y
-          - export $SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY
+          # - which ssh 
+          # - apt update 
+          # - apt install ssh-askpass -y
           - echo "$SSH_PRIVATE_KEY"
           - echo "$SSH_USER"
           - echo "$SSH_USER2"
