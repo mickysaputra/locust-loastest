@@ -32,7 +32,7 @@ definitions:
           - cat /$SSH_USER/id_rsa
           - chmod 600 /$SSH_USER/id_rsa
           - cat "/$SSH_USER/id_rsa"
-          - rsync -arPp "ssh -i /$SSH_USER/id_rsa" --progress locustfiles \
+          - rsync -arPp "ssh -i /$SSH_USER/id_rsa -o StrictHostKeyChecking=no" --progress locustfiles \
             $SSH_USER@$SSH_HOST:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
           # - pipe: atlassian/rsync-deploy:0.12.0
           #   variables:
