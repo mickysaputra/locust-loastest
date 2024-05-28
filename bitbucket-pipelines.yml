@@ -26,15 +26,15 @@ definitions:
           - which ssh 
           - apt update 
           - apt install ssh-askpass -y
-          - touch /${SSH_USER}/id_rsa && echo "$SSH_PRIVATE_KEY" > /${SSH_USER}/id_rsa
-          - cat /${SSH_USER}/id_rsa
-          - chmod 600 /${SSH_USER}/id_rsa
-          - cat "/${SSH_USER}/id_rsa"
-          - rsync -arPp "ssh -i /${SSH_USER}/id_rsa" --progress locustfiles \
-            ${SSH_USER}@${SSH_HOST}:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
+          - touch /$SSH_USER/id_rsa && echo "$SSH_PRIVATE_KEY" > /$SSH_USER/id_rsa
+          - cat /$SSH_USER/id_rsa
+          - chmod 600 /$SSH_USER/id_rsa
+          - cat "/$SSH_USER/id_rsa"
+          - rsync -arPp "ssh -i /$SSH_USER/id_rsa" --progress locustfiles \
+            $SSH_USER@${SSH_HOST}:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
           # - pipe: atlassian/rsync-deploy:0.12.0
           #   variables:
-          #     USER: ${SSH_USER}
+          #     USER: $SSH_USER
           #     SERVER: $SSH_HOST
           #     REMOTE_PATH: '/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles'
           #     LOCAL_PATH: 'locustfiles'
