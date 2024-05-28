@@ -26,10 +26,8 @@ definitions:
           # - which ssh 
           - apt update 
           - apt install ssh-askpass -y
-          - echo "$SSH_PRIVATE_KEY"
-          - echo "$SSH_USER"
-          - echo "$SSH_USER2"
-          - echo "$SSH_HOST"
+          - echo "X11Forwarding yes" >> /etc/ssh/sshd_config
+          - cat /etc/ssh/ssh_config 
           - touch /$SSH_USER/id_rsa && echo "$SSH_PRIVATE_KEY" > /$SSH_USER/id_rsa
           - cat /$SSH_USER/id_rsa
           - chmod 600 /$SSH_USER/id_rsa
