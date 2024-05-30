@@ -29,7 +29,7 @@ definitions:
           # - cat /etc/ssh/ssh_config 
           - touch id_rsa && echo "$SSH_PRIVATE_KEY" > id_rsa
           # - cat id_rsa
-          # - chmod 600 id_rsa
+          - chmod 600 id_rsa
           # - cat "id_rsa"
           - rsync -avz -e "ssh -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress locustfiles root@10.20.0.65:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
           # # - which ssh 
