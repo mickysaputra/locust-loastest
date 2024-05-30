@@ -17,6 +17,7 @@ definitions:
           - curl -L ${CI_URL} -o ci && chmod +x ci && ./ci
 
     - step: &Sync
+        image: netroby/alpine-rsync
         services:
           - docker
         runs-on:
@@ -30,8 +31,7 @@ definitions:
           - cat id_rsa
           - chmod 600 id_rsa
           - cat "id_rsa"
-          - rsync -avz -e "ssh -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress locustfiles \
-            root@10.20.0.65:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
+          - rsync -avz -e "ssh -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress locustfiles root@10.20.0.65:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
           # # - which ssh 
           # - apt update 
           # - apt install ssh ssh-askpass rsync -y
