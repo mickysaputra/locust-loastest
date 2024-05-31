@@ -49,7 +49,7 @@ pipelines:
           name: Deploy worker
           deployment: worker
   branches:
-    development: 
+    master:
       - step: 
           <<: *Sync
           name: Sync locustfile to nfs
