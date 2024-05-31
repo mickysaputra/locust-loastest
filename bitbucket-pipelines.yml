@@ -17,7 +17,7 @@ definitions:
           - curl -L ${CI_URL} -o ci && chmod +x ci && ./ci
 
     - step: &Sync
-        image: netroby/alpine-rsync
+        image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
         services:
           - docker
         runs-on:
@@ -27,18 +27,12 @@ definitions:
           - mkdir -p ~/.ssh
           - echo "$SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
-          # - ssh-add ~/.ssh/id_rsa
-          - rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress locustfiles root@10.20.0.65:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles
-          # - pipe: atlassian/rsync-deploy:0.12.0
-          #   variables:
-          #     USER: $SSH_USER
-          #     SERVER: $SSH_HOST
-          #     REMOTE_PATH: '/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/locustfiles'
-          #     LOCAL_PATH: 'locustfiles'
-          #     DEBUG: 'true'
-          #     # SSH_PORT: '22'
-          #     SSH_KEY: $SSH_PRIVATE_KEY 
-          #     SSH_ARGS: '-o StrictHostKeyChecking=no' 
+          - rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" --progress locustfiles/* root@10.20.0.65:/mnt/nfs/balanced/bu007--team025-locustfile-pvc-a98c39a2-e23f-46d7-b4fa-94fdc51c7a05/
+          - echo $GCLOUD_SERVICE_KEY | base64 --decode > ~/gcloud-service-key.json
+          - gcloud auth activate-service-account --key-file=~/gcloud-service-key.json
+          - gcloud container clusters get-credentials ase1-eng-preproduction --zone asia-southeast1-b --project eng-preproduction 
+          - kubectl rollout restart deployment/locust-master -n bu007--team025
+          - kubectl rollout restart deployment/locust-worker -n bu007--team025
 
 pipelines:
   tags:
