@@ -52,5 +52,5 @@ pipelines:
     development: 
       - step: 
           <<: *Sync
-          name: rsync to nfs
+          name: Sync locustfile to nfs
           deployment: sync
