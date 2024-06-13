@@ -49,7 +49,9 @@ With the following file structure:
 The Web UI will display:
 
 <img src="_images/userclass_picker_example.png" width="200" />
-test
-
-redeploy
-- redeploy 07082023
+ 
+Notes:
+- re-deploy 04042023
+- re-deploy 02052023
+- re-deploy 1052023
+-test

@@ -1,5 +1,6 @@
 From locustio/locust:latest
 
+RUN pip install redis
 
 COPY locustfiles /mnt/locust/locustfiles
 
